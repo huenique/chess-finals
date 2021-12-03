@@ -1,5 +1,9 @@
 html,
 body {
+  background-image: url("../images/home-1.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   height: 100%;
 }
 
