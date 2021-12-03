@@ -1,0 +1,49 @@
+html,
+body {
+  height: 100%;
+}
+
+#app {
+  width: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.splashscreen {
+  text-align: center;
+}
+
+.text {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+}
+
+.slide-object {
+  display: none;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 5s;
+}
+
+@keyframes fade {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}

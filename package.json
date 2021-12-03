@@ -1,0 +1,22 @@
+{
+  "name": "realty-website",
+  "version": "1.0.0",
+  "description": "Sample frontend layout for a real estate development company.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huenique/realty-website.git"
+  },
+  "author": "Hju Kneyck Flores",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/huenique/realty-website/issues"
+  },
+  "homepage": "https://github.com/huenique/realty-website#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
