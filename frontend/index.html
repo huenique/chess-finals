@@ -14,11 +14,7 @@
 </head>
 
 <body>
-  <!-- Preloader -->
   <div class="loader"></div>
-  <!-- /Preloader -->
-
-  <div class="main-content"></div>
 
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
@@ -42,7 +38,10 @@
   </nav>
   <!-- /Navbar -->
 
+  <!-- Content -->
   <div id="app"></div>
+  <!-- /Content -->
+
   <script>
     let spinnerWrapper = document.querySelector('.loader');
     window.addEventListener('load', function () {
@@ -50,6 +49,7 @@
     });
   </script>
   <script type="module" src="./static/js/index.js"></script>
+
 </body>
 
 </html>

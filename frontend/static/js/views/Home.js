@@ -8,17 +8,17 @@ export default class extends AbstractView {
   }
 
   async generateLabels() {
-    var labels = [
+    let labels = [
       "find your dream home",
       "unearth new lands",
       "discover townhouses",
       "locate commercial establishments",
     ];
 
-    var slideObjects = [];
+    let slideObjects = [];
 
-    for (var i = 0; i < labels.length; i++) {
-      var slideObject = `
+    for (let i = 0; i < labels.length; i++) {
+      let slideObject = `
         <div class="slide-object fade">
           <div class="text-label text-center text-white fw-bold">${labels[i]}</div>
         </div>
@@ -30,7 +30,7 @@ export default class extends AbstractView {
   }
 
   async getHtml() {
-    var labels = await this.generateLabels();
+    let labels = await this.generateLabels();
 
     return `
     <div class="container">
