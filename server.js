@@ -5,7 +5,7 @@ const app = express();
 
 app.use(
   "/static",
-  express.static(path.resolve(__dirname, "frontend", "static"))
+  express.static(path.resolve(__dirname, "frontend", "static")),
 );
 
 app.get("/*", (req, res) => {
@@ -13,5 +13,5 @@ app.get("/*", (req, res) => {
 });
 
 app.listen(process.env.PORT || 3000, () =>
-  console.log("Server running at http://localhost:3000")
+  console.log("Server running at http://localhost:3000"),
 );

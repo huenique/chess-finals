@@ -1,10 +1,10 @@
 # Realty Website
 
-Sample frontend layout for a real estate development company.
+Sample SPA for a real estate development company.
 
 ## Pages
 
-- Dashboard page
+- Home page
 - About us
 - Contact us
 - News

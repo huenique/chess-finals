@@ -1,5 +1,5 @@
 import Career from "./views/Career.js";
-import Dashboard from "./views/Dashboard.js";
+import Home from "./views/Home.js";
 import News from "./views/News.js";
 
 var drawing = false;
@@ -11,7 +11,7 @@ const navigateTo = (url) => {
 
 const router = async () => {
   const routes = [
-    { path: "/", view: Dashboard },
+    { path: "/", view: Home },
     { path: "/news", view: News },
     { path: "/careers", view: Career },
   ];

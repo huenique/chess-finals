@@ -1,5 +1,5 @@
-import AbstractView from "./AbstractView.js";
 import { slideText } from "../helpers/text.js";
+import AbstractView from "./AbstractView.js";
 
 export default class extends AbstractView {
   constructor() {
