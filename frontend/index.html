@@ -14,6 +14,12 @@
 </head>
 
 <body>
+  <!-- Preloader -->
+  <div class="loader"></div>
+  <!-- /Preloader -->
+
+  <div class="main-content"></div>
+
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -37,6 +43,12 @@
   <!-- /Navbar -->
 
   <div id="app"></div>
+  <script>
+    let spinnerWrapper = document.querySelector('.loader');
+    window.addEventListener('load', function () {
+      spinnerWrapper.parentElement.removeChild(spinnerWrapper);
+    });
+  </script>
   <script type="module" src="./static/js/index.js"></script>
 </body>
 

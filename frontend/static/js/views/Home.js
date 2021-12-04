@@ -20,7 +20,7 @@ export default class extends AbstractView {
     for (var i = 0; i < labels.length; i++) {
       var slideObject = `
         <div class="slide-object fade">
-          <div class="text">${labels[i]}</div>
+          <div class="text-label text-center text-white fw-bold">${labels[i]}</div>
         </div>
       `;
       slideObjects.push(slideObject);
@@ -36,8 +36,10 @@ export default class extends AbstractView {
     <div class="container">
       ${labels.join("\r\n")}
       <div class="splashscreen">
-        <input type="text" placeholder="City, Neighbourhood, Address, ZIP Code" aria-label="Search" style="width: 40%;">
-        <button class="btn">Search</button>
+        <label class="search-field">
+          <input class="m-2 search-placeholder" type="text" placeholder="City, Neighbourhood, Address, ZIP Code" aria-label="Search" placeholder="&nbsp;"/>
+          <button class="btn btn-light">Search</button>
+        </label>
       </div>
     </div>
     `;
