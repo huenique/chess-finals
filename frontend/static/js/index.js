@@ -3,6 +3,7 @@ import Home from "./views/Home.js";
 import News from "./views/News.js";
 
 var drawing = false;
+var drawn = 0;
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -39,6 +40,12 @@ const router = async () => {
   document.querySelector("#app").innerHTML = await view.getHtml();
 
   // execute other known methods
+  // reload entire page after certain number of page load
+  // implemented due to a weird bug with drawEffects() where effects won't sometimes load
+  drawn += 1;
+  if (drawn > 10 && match.route.path === "/") {
+    location.reload();
+  }
 
   if (typeof view.drawEffects === "function" && !drawing) {
     drawing = true;
