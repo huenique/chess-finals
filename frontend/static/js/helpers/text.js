@@ -1,3 +1,5 @@
+import { sleep } from "../helpers/utils.js";
+
 export async function typeText(content) {
   // Current sentence being processed
   var _PART = 0;
@@ -69,9 +71,11 @@ export async function slideText() {
   async function showSlides() {
     var i;
     var slides = document.getElementsByClassName("slide-object");
+
     for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }
+
     slideIndex++;
     if (slideIndex > slides.length) {
       slideIndex = 1;
@@ -79,7 +83,8 @@ export async function slideText() {
 
     try {
       slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 5000);
+      await sleep(5000);
+      showSlides();
     } catch (e) {}
   }
 }

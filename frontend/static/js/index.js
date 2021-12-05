@@ -2,8 +2,7 @@ import Contact from "./views/Contact.js";
 import Home from "./views/Home.js";
 import News from "./views/News.js";
 
-var drawing = false;
-var drawn = 0;
+var drawingEffects = [];
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);
@@ -39,20 +38,13 @@ const router = async () => {
   // inject component into html template
   document.querySelector("#app").innerHTML = await view.getHtml();
 
-  // execute other known methods
-  // reload entire page after certain number of page load
-  // implemented due to a weird bug with drawEffects() where effects won't sometimes load
-  drawn += 1;
-  if (drawn > 10 && match.route.path === "/") {
-    location.reload();
-  }
-
-  if (typeof view.drawEffects === "function" && !drawing) {
-    drawing = true;
+  if (
+    typeof view.drawEffects === "function" &&
+    drawingEffects.includes(match.route.path) === false
+  ) {
+    drawingEffects.push(match.route.path);
     await view.drawEffects();
   }
-
-  // console.log(match.route.view());
 };
 
 // return data on page history navigation

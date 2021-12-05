@@ -1,10 +1,30 @@
 import { slideText } from "../helpers/text.js";
+import { sleep } from "../helpers/utils.js";
 import AbstractView from "./AbstractView.js";
 
 export default class extends AbstractView {
   constructor() {
     super();
     this.setTitle("Realty Website");
+  }
+
+  /*
+  Effects listener
+
+  Some effects may break during page navigation, mostly due to functions not
+  executing on time. If elements are missing essential attributes, we assume
+  they broke. This will automatically recall those effects.
+  */
+  async checkDrawEffects() {
+    while (true) {
+      let slideObjects = document.getElementsByClassName("slide-object");
+      for (let i = 0; i < slideObjects.length; i++) {
+        if (!slideObjects[i].hasAttribute("style")) {
+          await slideText();
+        }
+      }
+      await sleep(1000);
+    }
   }
 
   async generateLabels() {
@@ -47,5 +67,6 @@ export default class extends AbstractView {
 
   async drawEffects() {
     await slideText();
+    await this.checkDrawEffects();
   }
 }
