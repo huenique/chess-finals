@@ -1,4 +1,4 @@
-import Career from "./views/Career.js";
+import Contact from "./views/Contact.js";
 import Home from "./views/Home.js";
 import News from "./views/News.js";
 
@@ -14,7 +14,7 @@ const router = async () => {
   const routes = [
     { path: "/", view: Home },
     { path: "/news", view: News },
-    { path: "/careers", view: Career },
+    { path: "/contact", view: Contact },
   ];
 
   const matches = routes.map((route) => {

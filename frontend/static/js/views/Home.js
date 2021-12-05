@@ -12,7 +12,7 @@ export default class extends AbstractView {
       "find your dream home",
       "unearth new lands",
       "discover townhouses",
-      "locate commercial establishments",
+      "locate establishments",
     ];
 
     var slideObjects = [];

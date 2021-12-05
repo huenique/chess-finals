@@ -1,4 +1,4 @@
-import { randomDate } from "../store/actions.js";
+import { getArticleImages, randomDate } from "../store/actions.js";
 import AbstractView from "./AbstractView.js";
 
 export default class extends AbstractView {
@@ -7,9 +7,22 @@ export default class extends AbstractView {
     this.setTitle("News - Realty Website");
   }
 
-  async generateArticle() {
+  async genImages(limit) {
+    var source = await getArticleImages(limit);
+    var data = source.data;
+    var images = [];
+
+    for (let i = 0; i < data.length; i++) {
+      images.push(data[i].download_url);
+    }
+
+    return images;
+  }
+
+  async genArticle() {
     var articles = [];
     var dates = [];
+    var images = await this.genImages(6);
 
     for (let i = 0; i < 6; i++) {
       let date = await randomDate("01/01/2022", "01/01/2021");
@@ -25,7 +38,7 @@ export default class extends AbstractView {
         <a href="#" class="list-group-item list-group-item-action">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">List group item heading</h5>
-            <img src="https://source.unsplash.com/random/1280x720" width="20%" height="0%" alt="...">
+            <img src="${images[i]}" width="20%" height="0%" alt="article-thumbnail">
           </div>
           <p class="mb-1">Some placeholder content in a paragraph.</p>
           <small class="text-muted">${dates[i]}</small>
@@ -38,7 +51,7 @@ export default class extends AbstractView {
   }
 
   async getHtml() {
-    let articles = await this.generateArticle();
+    let articles = await this.genArticle();
 
     return `
       <div class="container">

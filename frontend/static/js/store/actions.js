@@ -1,5 +1,7 @@
-// Dummy API request & response
-
+/* 
+This func is supposed to fetch external content, but no real content is
+required for this project so it generates a random date instead.
+*/
 export const randomDate = async (end, start) => {
   function randomValueBetween(min, max) {
     return Math.random() * (max - min) + min;
@@ -12,5 +14,13 @@ export const randomDate = async (end, start) => {
     return new Date(randomValueBetween(end, start)).toLocaleDateString();
   } else {
     return new Date(randomValueBetween(start, end)).toLocaleDateString();
+  }
+};
+
+export const getArticleImages = async (limit) => {
+  try {
+    return await axios.get(`https://picsum.photos/v2/list?limit=${limit}`);
+  } catch (error) {
+    console.error(error);
   }
 };
