@@ -22,7 +22,7 @@ export default class extends AbstractView {
   async genArticle() {
     var articles = [];
     var dates = [];
-    var images = await this.genImages(6);
+    // var images = await this.genImages(6);
 
     for (let i = 0; i < 6; i++) {
       let date = await randomDate("01/01/2022", "01/01/2021");
@@ -38,7 +38,7 @@ export default class extends AbstractView {
         <a href="#" class="list-group-item list-group-item-action">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">List group item heading</h5>
-            <img src="${images[i]}" width="20%" height="0%" alt="article-thumbnail">
+            <img src="https://picsum.photos/640/480?random=${i}" width="20%" height="0%" alt="article-thumbnail">
           </div>
           <p class="mb-1">Some placeholder content in a paragraph.</p>
           <small class="text-muted">${dates[i]}</small>
