@@ -49,7 +49,7 @@ export default class extends AbstractView {
               <div class="col">
                 <div class="mb-3 text-center">
                   <div class="form-floating">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <textarea class="form-control" id="floatingTextarea2" style="height: 100px" required></textarea>
                     <label for="floatingTextarea2">Enter a message</label>
                   </div>
                   <button type="submit" class="btn btn-primary mt-5">Submit</button>

@@ -12,8 +12,8 @@ export default class extends AbstractView {
   Effects listener
 
   Some effects may break during page navigation, mostly due to functions not
-  executing on time. If elements are missing essential attributes, we assume
-  they broke. This will automatically recall those effects.
+  executing on time. This a block of code checks if elements are broken by
+  looking at their attributes and performs resets if necessary.
   */
   async checkDrawEffects() {
     while (true) {

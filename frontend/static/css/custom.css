@@ -18,14 +18,53 @@ body {
   width: 100%;
 }
 
+.alt-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .article-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
   overflow: auto;
   max-height: 80vh;
+  margin-top: 50px;
 }
 
 .article-card {
-  width: 100%;
-  background-color: white;
+  height: 160px;
+}
+
+.article-content {
+  flex-direction: column;
+  width: 75%;
+}
+
+.article-title {
+  font-size: 24px;
+}
+
+.article-body {
+  font-size: 16px;
+}
+
+.article-date {
+  position: absolute;
+  top: 99%;
+  transform: translateY(-99%);
+}
+
+.article-media {
+  position: absolute;
+  top: 3%;
+  left: 93%;
+  transform: translateX(-93%);
+  width: 20%;
+  margin-left: 40px;
 }
 
 .loader {
@@ -81,6 +120,26 @@ body {
   }
 }
 
+/* iPad support */
+@media only screen and (max-width: 810px) and (min-width: 810px) {
+  .article-container {
+    width: 100%;
+  }
+
+  .article-content {
+    width: 65%;
+  }
+
+  .article-media {
+    position: absolute;
+    top: 12px;
+    left: 90%;
+    transform: translateX(-90%);
+    width: 25%;
+    /* margin: 40px; */
+  }
+}
+
 /* For smaller screens */
 @media screen and (max-width: 428px) {
   .text-label {
@@ -95,5 +154,54 @@ body {
   }
   .search-placeholder {
     width: 100%;
+  }
+
+  .article-container {
+    margin-top: 90px;
+    width: 100%;
+    max-height: 100vh;
+  }
+
+  .article-holder {
+    flex-direction: column;
+  }
+
+  .article-content {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .article-card {
+    height: unset;
+  }
+
+  .article-title {
+    font-size: 16px;
+  }
+
+  .article-body {
+    font-size: 12px;
+  }
+
+  .article-media {
+    position: static;
+    top: 0;
+    left: 0%;
+    transform: translateX(0%);
+    width: 100%;
+    margin-left: 0px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 412px) {
+  .article-container {
+    margin-top: 89px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .article-container {
+    left: 49.9%;
   }
 }

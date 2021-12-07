@@ -35,13 +35,20 @@ export default class extends AbstractView {
 
     for (let i = 0; i < 6; i++) {
       let article = `
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">List group item heading</h5>
-            <img src="https://picsum.photos/640/480?random=${i}" width="20%" height="0%" alt="article-thumbnail">
+        <a href="#" class="article-card list-group-item list-group-item-action">
+          <div class="d-flex">
+            <div class="article-content">
+              <p class="article-title">Lorem ipsum dolor sit amet</p>
+              <p class="article-body text-truncate" style="color: gray">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </p>
+              <small class="article-date text-muted">${dates[i]}</small>
+              <img class="article-media" src="https://picsum.photos/640/480?random=${i}" alt="article-thumbnail">
+              </div>
           </div>
-          <p class="mb-1">Some placeholder content in a paragraph.</p>
-          <small class="text-muted">${dates[i]}</small>
         </a>
       `;
       articles.push(article);
@@ -54,8 +61,8 @@ export default class extends AbstractView {
     let articles = await this.genArticle();
 
     return `
-      <div class="container">
-        <div class="article-container mt-5">
+      <div class="alt-container container">
+        <div class="article-container">
           <div class="list-group">
             ${articles.join("\r\n")}
           </div>
