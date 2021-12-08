@@ -28,18 +28,18 @@ export default class extends AbstractView {
   }
 
   async generateLabels() {
-    var labels = [
+    let labels = [
       "find your dream home",
       "unearth new lands",
       "discover townhouses",
       "locate establishments",
     ];
 
-    var slideObjects = [];
+    let slideObjects = [];
 
     for (let i = 0; i < labels.length; i++) {
       let slideObject = `
-        <div class="slide-object fade">
+        <div class="slide-object">
           <div class="text-label text-center text-white fw-bold">${labels[i]}</div>
         </div>
       `;
@@ -49,24 +49,81 @@ export default class extends AbstractView {
     return slideObjects;
   }
 
+  async displayResults() {
+    let searchBtn = document.getElementById("search-btn");
+    let searchModal = document.getElementById("search-modal");
+
+    searchBtn.addEventListener("click", function () {
+      let searchValue = document.getElementById("search-value");
+      if (searchValue.value !== "") {
+        let _searchModal = new bootstrap.Modal(
+          document.getElementById("search-modal"),
+        );
+        _searchModal.show();
+      }
+    });
+
+    searchModal.addEventListener("shown.bs.modal", function () {
+      let results = document.getElementById("results-group");
+      let resultImgs = [];
+
+      for (let i = 0; i < 5; i++) {
+        resultImgs.push(`
+          <li class="search-result-list list-group-item d-flex">
+            <p class="result-preview">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <img class="result-thumbnail" src="https://picsum.photos/640/480?random=${i}" alt="result-img">
+          </li>
+        `);
+      }
+
+      results.innerHTML = `
+        <ul class="list-group list-group-flush">
+          ${resultImgs.join("\r\n")}
+        </ul>
+      `;
+    });
+  }
+
   async getHtml() {
-    var labels = await this.generateLabels();
+    let labels = await this.generateLabels();
 
     return `
     <div class="container">
+      <div class="modal fade" id="search-modal" tabindex="-1" aria-labelledby="search-result" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-lg-down modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="search-result">Result: </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="results-group" class="modal-body">
+              ...
+            </div>
+          </div>
+        </div>
+      </div>
       ${labels.join("\r\n")}
       <div class="splashscreen">
-        <label class="search-field">
-          <input class="m-2 search-placeholder" type="text" placeholder="City, Neighbourhood, Address, ZIP Code" aria-label="Search" placeholder="&nbsp;"/>
-          <button class="btn btn-light">Search</button>
-        </label>
+        <form name="search-form" onsubmit="return false">
+          <label class="search-field">
+            <input class="m-2 search-placeholder" id="search-value" type="text" placeholder="City, Neighbourhood, Address, ZIP Code" aria-label="Search" placeholder="&nbsp;" required/>
+            <button class="btn btn-light" id="search-btn">Search</button>
+          </label>
+        </form>
       </div>
+
     </div>
     `;
   }
 
   async drawEffects() {
+    await this.displayResults();
     await slideText();
+
+    // This should be called last as it runs a loop
     await this.checkDrawEffects();
   }
 }

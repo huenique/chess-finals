@@ -2,7 +2,7 @@ import Contact from "./views/Contact.js";
 import Home from "./views/Home.js";
 import News from "./views/News.js";
 
-var drawingEffects = [];
+let drawingEffects = [];
 
 const navigateTo = (url) => {
   history.pushState(null, null, url);

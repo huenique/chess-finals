@@ -1,4 +1,4 @@
-import { getArticleImages, randomDate } from "../store/actions.js";
+import { randomDate } from "../store/actions.js";
 import AbstractView from "./AbstractView.js";
 
 export default class extends AbstractView {
@@ -7,22 +7,9 @@ export default class extends AbstractView {
     this.setTitle("News - Realty Website");
   }
 
-  async genImages(limit) {
-    var source = await getArticleImages(limit);
-    var data = source.data;
-    var images = [];
-
-    for (let i = 0; i < data.length; i++) {
-      images.push(data[i].download_url);
-    }
-
-    return images;
-  }
-
   async genArticle() {
-    var articles = [];
-    var dates = [];
-    // var images = await this.genImages(6);
+    let articles = [];
+    let dates = [];
 
     for (let i = 0; i < 6; i++) {
       let date = await randomDate("01/01/2022", "01/01/2021");
@@ -46,7 +33,7 @@ export default class extends AbstractView {
                 nisi ut aliquip ex ea commodo consequat.
               </p>
               <small class="article-date text-muted">${dates[i]}</small>
-              <img class="article-media" src="https://picsum.photos/640/480?random=${i}" alt="article-thumbnail">
+              <img class="article-thumbnail" src="https://picsum.photos/640/480?random=${i}" alt="article-thumbnail">
               </div>
           </div>
         </a>

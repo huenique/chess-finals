@@ -1,12 +1,12 @@
 import { sleep } from "../helpers/utils.js";
 
 export async function slideText() {
-  var slideIndex = 0;
+  let slideIndex = 0;
   await showSlides();
 
   async function showSlides() {
-    var i;
-    var slides = document.getElementsByClassName("slide-object");
+    let i;
+    let slides = document.getElementsByClassName("slide-object");
 
     for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
