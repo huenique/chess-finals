@@ -91,31 +91,30 @@ export default class extends AbstractView {
     let labels = await this.generateLabels();
 
     return `
-    <div class="container">
-      <div class="modal fade" id="search-modal" tabindex="-1" aria-labelledby="search-result" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-lg-down modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="search-result">Result: </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div id="results-group" class="modal-body">
-              ...
+      <div class="container">
+        <div class="modal fade" id="search-modal" tabindex="-1" aria-labelledby="search-result" aria-hidden="true" aria-modal="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-lg-down modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="search-result">Result: </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div id="results-group" class="modal-body">
+                ...
+              </div>
             </div>
           </div>
         </div>
+        ${labels.join("\r\n")}
+        <div class="splashscreen">
+          <form name="search-form" onsubmit="return false">
+            <label class="search-field">
+              <input class="m-2 search-placeholder" id="search-value" type="text" placeholder="City, Neighbourhood, Address, ZIP Code" aria-label="Search" placeholder="&nbsp;" required/>
+              <button class="btn btn-light" id="search-btn">Search</button>
+            </label>
+          </form>
+        </div>
       </div>
-      ${labels.join("\r\n")}
-      <div class="splashscreen">
-        <form name="search-form" onsubmit="return false">
-          <label class="search-field">
-            <input class="m-2 search-placeholder" id="search-value" type="text" placeholder="City, Neighbourhood, Address, ZIP Code" aria-label="Search" placeholder="&nbsp;" required/>
-            <button class="btn btn-light" id="search-btn">Search</button>
-          </label>
-        </form>
-      </div>
-
-    </div>
     `;
   }
 
