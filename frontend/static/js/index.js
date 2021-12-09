@@ -2,8 +2,6 @@ import Contact from "./views/Contact.js";
 import Home from "./views/Home.js";
 import News from "./views/News.js";
 
-let drawingEffects = [];
-
 const navigateTo = (url) => {
   history.pushState(null, null, url);
   router();
@@ -35,15 +33,12 @@ const router = async () => {
 
   const view = new match.route.view();
 
-  // inject component into html template
+  // Inject component into html template
   document.querySelector("#app").innerHTML = await view.getHtml();
 
-  if (
-    typeof view.drawEffects === "function" &&
-    drawingEffects.includes(match.route.path) === false
-  ) {
-    drawingEffects.push(match.route.path);
-    await view.drawEffects();
+  // Execute effects (e.g. animation), events, and other functions/methods
+  if (typeof view.loadExtra === "function") {
+    await view.loadExtra();
   }
 };
 

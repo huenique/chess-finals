@@ -2,6 +2,8 @@ import { slideText } from "../helpers/text.js";
 import { sleep } from "../helpers/utils.js";
 import AbstractView from "./AbstractView.js";
 
+var drawingEffects = false;
+
 export default class extends AbstractView {
   constructor() {
     super();
@@ -100,7 +102,6 @@ export default class extends AbstractView {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div id="results-group" class="modal-body">
-                ...
               </div>
             </div>
           </div>
@@ -118,11 +119,13 @@ export default class extends AbstractView {
     `;
   }
 
-  async drawEffects() {
+  async loadExtra() {
     await this.displayResults();
-    await slideText();
 
-    // This should be called last as it runs a loop
-    await this.checkDrawEffects();
+    if (!drawingEffects) {
+      drawingEffects = true;
+      await slideText();
+      await this.checkDrawEffects();
+    }
   }
 }
