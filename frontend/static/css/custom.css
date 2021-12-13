@@ -119,6 +119,13 @@ body {
   animation-name: fade;
 }
 
+.contact-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 @keyframes fade {
   0%,
   100% {
@@ -146,6 +153,51 @@ body {
     transform: translateX(-90%);
     width: 25%;
     /* margin: 40px; */
+  }
+
+  .contact-form {
+    top: 55%;
+  }
+
+  .contact-title {
+    text-align: center;
+  }
+
+  .contact-field {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width: 768px) {
+  .article-container {
+    width: 100%;
+  }
+
+  .article-content {
+    width: 65%;
+  }
+
+  .article-thumbnail {
+    position: absolute;
+    top: 12px;
+    left: 90%;
+    transform: translateX(-90%);
+    width: 25%;
+    /* margin: 40px; */
+  }
+
+  .contact-form {
+    top: 55%;
+  }
+
+  .contact-title {
+    text-align: center;
+  }
+
+  .contact-field {
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -213,16 +265,51 @@ body {
   .result-thumbnail {
     width: 100%;
   }
+
+  .contact-form {
+    top: 55%;
+  }
+
+  .contact-title {
+    text-align: center;
+  }
+
+  .contact-field {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 412px) {
   .article-container {
     margin-top: 89px;
   }
+
+  .contact-title {
+    text-align: center;
+  }
+
+  .contact-field {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media screen and (max-width: 375px) {
   .article-container {
     left: 49.9%;
+  }
+
+  .contact-form {
+    top: 70%;
+  }
+
+  .contact-title {
+    text-align: center;
+  }
+
+  .contact-field {
+    display: flex;
+    flex-direction: column;
   }
 }

@@ -8,11 +8,11 @@ export default class extends AbstractView {
 
   async getHtml() {
     return `
-      <div class="container bg-white p-5">
-        <p class="fs-3 fw-bold">How can we help you?</p>
+      <div class="container contact-form bg-white p-5">
+        <p class="contact-title fs-3 fw-bold">How can we help you?</p>
         <form>
           <div class="container">
-            <div class="row">
+            <div class="contact-field row">
               <div class="col">
                 <div class="mb-3">
                   <label for="client-name" class="form-label">Name *</label>
@@ -26,7 +26,7 @@ export default class extends AbstractView {
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="contact-field row">
               <div class="col">
                 <div class="mb-3">
                   <label for="select-reason" class="form-label">Regarding *</label>
