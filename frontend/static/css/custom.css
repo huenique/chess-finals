@@ -136,6 +136,14 @@ body {
   }
 }
 
+/* iPad Pro support */
+@media only screen and (max-width: 1280px) and (min-width: 1280px) {
+  .text-label {
+    top: 35%;
+    font-size: 40px;
+  }
+}
+
 /* iPad support */
 @media only screen and (max-width: 810px) and (min-width: 810px) {
   .article-container {
@@ -169,6 +177,7 @@ body {
   }
 }
 
+/* Generic support for screens <= 768px */
 @media only screen and (max-width: 768px) and (min-width: 768px) {
   .article-container {
     width: 100%;
@@ -201,12 +210,13 @@ body {
   }
 }
 
-/* For smaller screens */
+/* Generic support for screens <= 428px */
 @media screen and (max-width: 428px) {
   .text-label {
     top: 30%;
     font-size: 30px;
   }
+
   .search-field {
     display: flex;
     align-items: center;
@@ -267,7 +277,8 @@ body {
   }
 
   .contact-form {
-    top: 55%;
+    top: 68%;
+    height: 120%;
   }
 
   .contact-title {
@@ -298,10 +309,6 @@ body {
 @media screen and (max-width: 375px) {
   .article-container {
     left: 49.9%;
-  }
-
-  .contact-form {
-    top: 70%;
   }
 
   .contact-title {

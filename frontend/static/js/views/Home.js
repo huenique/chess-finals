@@ -93,7 +93,7 @@ export default class extends AbstractView {
     let labels = await this.generateLabels();
 
     return `
-      <div class="container">
+      <div class="container-lg">
         <div class="modal fade" id="search-modal" tabindex="-1" aria-labelledby="search-result" aria-hidden="true" aria-modal="true">
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-lg-down modal-lg">
             <div class="modal-content">
