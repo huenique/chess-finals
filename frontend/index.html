@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="./static/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.9/dist/css/splide.min.css"
+      integrity="sha256-sB1O2oXn5yaSW1T/92q2mGU86IDhZ0j1Ya8eSv+6QfM="
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./static/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./static/css/custom.css" />
     <script
@@ -18,6 +24,11 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.9/dist/js/splide.min.js"
+      integrity="sha256-hRqTRyGihAkya5XnpyJGo41B339JIkirq+3p/gGNhAI="
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body>
@@ -69,10 +80,10 @@
         spinnerWrapper.parentElement.removeChild(spinnerWrapper);
       });
     </script>
-    <script>
-      feather.replace();
-    </script>
     <script type="module" src="./static/js/index.js"></script>
     <script type="module" src="./static/js/store/actions.js"></script>
+    <script async>
+      feather.replace();
+    </script>
   </body>
 </html>

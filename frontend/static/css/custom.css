@@ -18,6 +18,18 @@ body {
   width: 100%;
 }
 
+.review-container {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+  width: 50%;
+}
+
+.review-container .review-card {
+  max-width: 500px;
+}
+
 .alt-container {
   position: absolute;
   left: 50%;
@@ -86,8 +98,7 @@ body {
   width: 100%;
   height: 100%;
   z-index: 9999;
-  background: url("../images/preloader.gif") center no-repeat #1d1f39;
-  background-size: 10%;
+  background: url("../images/preloader.gif") center no-repeat white;
 }
 
 .splashscreen {
@@ -174,6 +185,10 @@ body {
   .contact-field {
     display: flex;
     flex-direction: column;
+  }
+
+  .review-container {
+    width: 100%;
   }
 }
 
@@ -288,6 +303,22 @@ body {
   .contact-field {
     display: flex;
     flex-direction: column;
+  }
+
+  .review-container {
+    width: 90%;
+  }
+
+  .review-container .review-card {
+    max-width: 300px;
+  }
+
+  .review-container .review-content-title {
+    font-size: 14px;
+  }
+
+  .review-container .review-content-body {
+    font-size: 12px;
   }
 }
 

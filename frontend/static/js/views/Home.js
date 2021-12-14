@@ -1,8 +1,14 @@
 import { slideText } from "../helpers/text.js";
-import { sleep } from "../helpers/utils.js";
+import { getRandomInt, loadIcons, sleep } from "../helpers/utils.js";
 import AbstractView from "./AbstractView.js";
 
 var drawingEffects = false;
+var avatarIds = [];
+
+// Prevent page from making multiple api calls to get profile avatars
+for (var i = 0; i < 7; i++) {
+  avatarIds.push(await getRandomInt(1, 69))
+}
 
 export default class extends AbstractView {
   constructor() {
@@ -29,6 +35,27 @@ export default class extends AbstractView {
     }
   }
 
+  async generateProfiles() {
+    let names = [
+      "Olufunmilayo Gray",
+      "Toby Aleks",
+      "Chikelu Ilham",
+      "Logan Anh",
+      "Lorrin Sheridan",
+      "Leighton Ade",
+      "Issy Suman",
+    ];
+    let avatars = [];
+
+    for (let i = 0; i < 7; i++) {
+      avatars.push(
+        `https://i.pravatar.cc/200?img=${avatarIds[i]}`,
+      );
+    }
+
+    return [names, avatars];
+  }
+
   async generateLabels() {
     let labels = [
       "find your dream home",
@@ -49,6 +76,41 @@ export default class extends AbstractView {
     }
 
     return slideObjects;
+  }
+
+  async generateReviews() {
+    let reviews = [];
+    let [names, avatars] = await this.generateProfiles();
+
+    for (let i = 0; i < 7; i++) {
+      let review = `
+        <li class="splide__slide">
+          <div class="review-card card mb-5">
+            <div class="row g-0 align-items-center">
+              <div class="col-md-4">
+                <img src="${
+                  avatars[i]
+                }" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="review-content-title card-title">${names[i]}</h5>
+                  <p class="review-content-body card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent auctor ex ut libero imperdiet, at posuere urna eleifend.
+                  </p>
+                  <p class="card-text">${`<i data-feather="star"></i>`.repeat(
+                    await getRandomInt(1, 5),
+                  )}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      `;
+      reviews.push(review);
+    }
+
+    return reviews;
   }
 
   async displayResults() {
@@ -89,8 +151,23 @@ export default class extends AbstractView {
     });
   }
 
+  async slideReviews() {
+    var splide = new Splide(".splide", {
+      autoWidth: true,
+      gap: "100em",
+      type: "loop",
+      perPage: 1,
+      focus: "center",
+      autoplay: true,
+      pauseOnFocus: false,
+    });
+
+    splide.mount();
+  }
+
   async getHtml() {
     let labels = await this.generateLabels();
+    let reviews = await this.generateReviews();
 
     return `
       <div class="container-lg">
@@ -115,12 +192,25 @@ export default class extends AbstractView {
             </label>
           </form>
         </div>
+        <div class="splide review-container">
+          <div class="splide__track review-list">
+            <ul class="splide__list">
+              ${reviews.join("\r\n")}
+            </ul>
+          </div>
+          <div class="splide__progress">
+            <div class="splide__progress__bar">
+            </div>
+          </div>
+        </div>
       </div>
     `;
   }
 
   async loadExtra() {
     await this.displayResults();
+    await this.slideReviews();
+    await loadIcons();
 
     if (!drawingEffects) {
       drawingEffects = true;
