@@ -85,10 +85,8 @@ export default class extends AbstractView {
         <li class="splide__slide">
           <div class="review-card card mb-5">
             <div class="row g-0 align-items-center">
-              <div class="col-md-4">
-                <img src="${
-                  avatars[i]
-                }" class="img-fluid rounded-start" alt="...">
+              <div class="col-md-4 ps-3">
+                <img src="${avatars[i]}" class="img-fluid rounded-start" alt="client-avatar">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
