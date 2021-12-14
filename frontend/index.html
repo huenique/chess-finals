@@ -74,16 +74,16 @@
     <div id="app"></div>
     <!-- /Content -->
 
+    <script type="module" src="./static/js/index.js"></script>
+    <script type="module" src="./static/js/store/actions.js"></script>
+    <script>
+      feather.replace();
+    </script>
     <script>
       let spinnerWrapper = document.querySelector(".loader");
       window.addEventListener("load", function () {
         spinnerWrapper.parentElement.removeChild(spinnerWrapper);
       });
-    </script>
-    <script type="module" src="./static/js/index.js"></script>
-    <script type="module" src="./static/js/store/actions.js"></script>
-    <script async>
-      feather.replace();
     </script>
   </body>
 </html>
