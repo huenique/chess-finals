@@ -7,7 +7,7 @@ var avatarIds = [];
 
 // Prevent page from making multiple api calls to get profile avatars
 for (var i = 0; i < 7; i++) {
-  avatarIds.push(await getRandomInt(1, 69))
+  avatarIds.push(await getRandomInt(1, 69));
 }
 
 export default class extends AbstractView {
@@ -48,9 +48,7 @@ export default class extends AbstractView {
     let avatars = [];
 
     for (let i = 0; i < 7; i++) {
-      avatars.push(
-        `https://i.pravatar.cc/200?img=${avatarIds[i]}`,
-      );
+      avatars.push(`https://i.pravatar.cc/200?img=${avatarIds[i]}`);
     }
 
     return [names, avatars];
@@ -99,7 +97,7 @@ export default class extends AbstractView {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent auctor ex ut libero imperdiet, at posuere urna eleifend.
                   </p>
                   <p class="card-text">${`<i data-feather="star"></i>`.repeat(
-                    await getRandomInt(1, 5),
+                    await getRandomInt(1, 5)
                   )}</p>
                 </div>
               </div>
@@ -121,7 +119,7 @@ export default class extends AbstractView {
       let searchValue = document.getElementById("search-value");
       if (searchValue.value !== "") {
         let _searchModal = new bootstrap.Modal(
-          document.getElementById("search-modal"),
+          document.getElementById("search-modal")
         );
         _searchModal.show();
       }
@@ -165,9 +163,30 @@ export default class extends AbstractView {
     splide.mount();
   }
 
+  async displayReviewsSection(reviews) {
+    return `
+      <div class="splide review-container">
+        <div class="splide__track review-list">
+          <ul class="splide__list">
+            ${reviews.join("\r\n")}
+          </ul>
+        </div>
+        <div class="splide__progress">
+          <div class="splide__progress__bar">
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   async getHtml() {
     let labels = await this.generateLabels();
     let reviews = await this.generateReviews();
+    // Disable reviews on smaller screens
+    let reviewsSection =
+      window.innerWidth >= 810
+        ? await this.displayReviewsSection(reviews)
+        : null;
 
     return `
       <div class="container-lg">
@@ -192,16 +211,8 @@ export default class extends AbstractView {
             </label>
           </form>
         </div>
-        <div class="splide review-container">
-          <div class="splide__track review-list">
-            <ul class="splide__list">
-              ${reviews.join("\r\n")}
-            </ul>
-          </div>
-          <div class="splide__progress">
-            <div class="splide__progress__bar">
-            </div>
-          </div>
+        <div id="reviews">
+          ${reviewsSection}
         </div>
       </div>
     `;
@@ -209,7 +220,11 @@ export default class extends AbstractView {
 
   async loadExtra() {
     await this.displayResults();
-    await this.slideReviews();
+
+    try {
+      await this.slideReviews();
+    } catch (err) {}
+
     await loadIcons();
 
     if (!drawingEffects) {
@@ -219,3 +234,10 @@ export default class extends AbstractView {
     }
   }
 }
+
+// Disable reviews on smaller screens
+window.onresize = () => {
+  if (window.innerWidth <= 800) {
+    document.getElementById("reviews").innerHTML = "";
+  }
+};
